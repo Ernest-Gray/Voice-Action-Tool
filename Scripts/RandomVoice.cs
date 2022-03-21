@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Random Voice/New Voice Group", fileName = "New Voice")]
+[CreateAssetMenu(menuName = "Voice Action Tool/New Voice", fileName = "New Voice")]
 [System.Serializable]
 public class RandomVoice : ScriptableObject
 {

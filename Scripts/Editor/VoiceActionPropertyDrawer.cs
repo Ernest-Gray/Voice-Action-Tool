@@ -17,7 +17,7 @@ public class VoiceActionPropertyDrawer : PropertyDrawer
     {
         // Create a new VisualElement to be the root the property UI
         var root = new VisualElement();
-        tree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Random Voice Player/VisualTrees/NewVoiceActionInspector.uxml");
+        tree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Voice Action Tool/VisualTrees/NewVoiceActionInspector.uxml");
         tree.CloneTree(root);
 
 
