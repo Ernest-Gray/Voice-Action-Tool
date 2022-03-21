@@ -4,14 +4,14 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Voice Action Tool/New Voice", fileName = "New Voice")]
 [System.Serializable]
-public class RandomVoice : ScriptableObject
+public class VoiceActionSet : ScriptableObject
 {
     [SerializeField]
     public List<VoiceAction> m_voiceActionList;
 
     [SerializeField]
     public string randomVoiceSoName = "n/a";
-    public RandomVoice()
+    public VoiceActionSet()
     {
         //Debug.Log("Created RandomVoice SO");
         this.m_voiceActionList = new List<VoiceAction>();
@@ -34,7 +34,7 @@ public class RandomVoice : ScriptableObject
         }
     }
 
-    public static void PlayIdle(RandomVoice voice, string actionName, AudioSource source)
+    public static void PlayIdle(VoiceActionSet voice, string actionName, AudioSource source)
     {
         if (voice == null)
         {

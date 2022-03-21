@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class BowlingBallVoice : MonoBehaviour
 {
-    public RandomVoice voice;
+    public VoiceActionSet voice;
     private AudioSource source;
 
 

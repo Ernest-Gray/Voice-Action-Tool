@@ -7,18 +7,18 @@ using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using System;
 
-[CustomEditor(typeof(RandomVoice))]
+[CustomEditor(typeof(VoiceActionSet))]
 public class RandomVoiceSOEditor : Editor
 {
     private VisualElement root;
-    private RandomVoice randomVoice;
+    private VoiceActionSet randomVoice;
 
 
     public VisualTreeAsset treeAsset;
     public override VisualElement CreateInspectorGUI()
     {
         //Set global variable for the scriptable object
-        randomVoice = target as RandomVoice;
+        randomVoice = target as VoiceActionSet;
         EditorUtility.SetDirty(this);
         EditorUtility.SetDirty(target);
         EditorUtility.SetDirty(randomVoice);
