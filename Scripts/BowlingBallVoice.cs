@@ -40,7 +40,7 @@ public class BowlingBallVoice : MonoBehaviour
     {
         if (Time.time > nextVoice)
         {
-            voice.PlayIdle(state.ToString(), source);
+            voice.PlayAction(state.ToString(), source);
             SetNextVoiceTime();
         }
     }

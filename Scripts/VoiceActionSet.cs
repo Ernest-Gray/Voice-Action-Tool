@@ -18,7 +18,7 @@ public class VoiceActionSet : ScriptableObject
         this.m_voiceActionList.Add(new VoiceAction("Action1"));
     }
 
-    public void PlayIdle(string actionName, AudioSource source)
+    public void PlayAction(string actionName, AudioSource source)
     {
         VoiceAction action = this.m_voiceActionList.Find(item => item.action_name == actionName);
         if (action == null)
@@ -34,7 +34,7 @@ public class VoiceActionSet : ScriptableObject
         }
     }
 
-    public static void PlayIdle(VoiceActionSet voice, string actionName, AudioSource source)
+    public static void PlayAction(VoiceActionSet voice, string actionName, AudioSource source)
     {
         if (voice == null)
         {
