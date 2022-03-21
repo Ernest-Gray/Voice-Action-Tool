@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:GroupBox style="overflow: visible;">
+        <ui:Label text="New Voice" display-tooltip-when-elided="true" binding-path="name" name="Header" style="-unity-text-align: upper-center; -unity-font-style: bold; font-size: 21px; margin-bottom: 15px; padding-top: 15px;" />
+        <uie:PropertyField binding-path="m_voiceActionList" name="pf" style="max-height: 760px;" />
+    </ui:GroupBox>
+</ui:UXML>

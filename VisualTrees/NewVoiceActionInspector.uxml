@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:GroupBox style="padding-top: 10px; padding-bottom: 10px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;">
+        <ui:GroupBox style="background-color: rgb(90, 123, 202); -unity-background-scale-mode: stretch-to-fill; border-top-left-radius: 12px; border-bottom-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; margin-right: 0; padding-right: 30px; padding-left: 15px; margin-top: 0; margin-left: 0; margin-bottom: 0; padding-bottom: 15px; padding-top: 15px;">
+            <ui:TextField picking-mode="Ignore" label="Action Name: " value="filler text" text="New Action" binding-path="action_name" class="Text" style="-unity-font-style: bold; font-size: 15px;" />
+            <uie:PropertyField binding-path="m_actionLines" label="Action Name: " value="New Action" name="pf" class="PropertyField" style="color: rgb(255, 255, 255);" />
+        </ui:GroupBox>
+    </ui:GroupBox>
+</ui:UXML>
