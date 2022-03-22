@@ -18,47 +18,61 @@ public class VoiceActionSet : ScriptableObject
         this.m_voiceActionList.Add(new VoiceAction("Action1"));
     }
 
-    public void PlayAction(string actionName, AudioSource source)
+    public bool PlayAction(string actionName, AudioSource source, bool onlyIfNearPlayer = false)
     {
-        VoiceAction action = this.m_voiceActionList.Find(item => item.action_name == actionName);
-        if (action == null)
+        if (onlyIfNearPlayer == false || (onlyIfNearPlayer == true && Vector3.Distance(FindObjectOfType<AudioListener>().transform.position, source.transform.position) < source.maxDistance))
         {
-            Debug.LogWarning("Action of: " + actionName + " not found in Voice of: " + this.name);
-        }
-        else
-        {
-            AudioClip clip = action.m_actionLines[Random.Range(0, action.m_actionLines.Count)];
+            VoiceAction action = this.m_voiceActionList.Find(item => item.action_name.ToLower() == actionName.ToLower());
+            if (action == null)
+            {
+                Debug.LogWarning("Action of: " + actionName + " not found in Voice of: " + this.name);
+                return false;
+            }
+            else
+            {
+                AudioClip clip = action.m_actionLines[Random.Range(0, action.m_actionLines.Count)];
 
-            source.clip = clip;
-            source.Play();
+                source.clip = clip;
+                source.Play();
+                return true;
+            }
         }
+        return false;
+        
     }
 
-    public static void PlayAction(VoiceActionSet voice, string actionName, AudioSource source)
+    public static bool PlayAction(VoiceActionSet voice, string actionName, AudioSource source, bool onlyIfNearPlayer = false)
     {
-        if (voice == null)
+        if (onlyIfNearPlayer == false || (onlyIfNearPlayer == true && Vector3.Distance(FindObjectOfType<AudioListener>().transform.position, source.transform.position) < source.maxDistance))
         {
-            Debug.LogWarning("RandomVoiceSO Not Found");
-            return;
-        }
-        if (source == null)
-        {
-            Debug.LogWarning("AudioSource not Found");
-            return;
-        }
+            if (voice == null)
+            {
+                Debug.LogWarning("RandomVoiceSO Not Found");
+                return false;
+            }
+            if (source == null)
+            {
+                Debug.LogWarning("AudioSource not Found");
+                return false;
+            }
 
-        VoiceAction action = voice.m_voiceActionList.Find(item => item.action_name == actionName);
-        if (action == null)
-        {
-            Debug.LogWarning("Action of: " + actionName + " not found in Voice of: " + voice.name);
-        }
-        else
-        {
-            AudioClip clip = action.m_actionLines[Random.Range(0, action.m_actionLines.Count)];
+            VoiceAction action = voice.m_voiceActionList.Find(item => item.action_name == actionName);
+            if (action == null)
+            {
+                Debug.LogWarning("Action of: " + actionName + " not found in Voice of: " + voice.name);
+                return false;
+            }
+            else
+            {
+                AudioClip clip = action.m_actionLines[Random.Range(0, action.m_actionLines.Count)];
 
-            source.clip = clip;
-            source.Play();
+                source.clip = clip;
+                source.Play();
+                return true;
+            }
         }
+        return false;
+
     }
 }
 
