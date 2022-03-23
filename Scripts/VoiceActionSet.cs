@@ -30,11 +30,15 @@ public class VoiceActionSet : ScriptableObject
             }
             else
             {
-                AudioClip clip = action.m_actionLines[Random.Range(0, action.m_actionLines.Count)];
+                if (action.m_actionLines != null && action.m_actionLines.Count > 0)
+                {
+                    AudioClip clip = action.m_actionLines[Random.Range(0, action.m_actionLines.Count)];
 
-                source.clip = clip;
-                source.Play();
-                return true;
+                    source.clip = clip;
+                    source.Play();
+                    return true;
+                }
+                
             }
         }
         return false;
@@ -64,11 +68,14 @@ public class VoiceActionSet : ScriptableObject
             }
             else
             {
-                AudioClip clip = action.m_actionLines[Random.Range(0, action.m_actionLines.Count)];
+                if (action.m_actionLines != null && action.m_actionLines.Count > 0)
+                {
+                    AudioClip clip = action.m_actionLines[Random.Range(0, action.m_actionLines.Count)];
 
-                source.clip = clip;
-                source.Play();
-                return true;
+                    source.clip = clip;
+                    source.Play();
+                    return true;
+                }
             }
         }
         return false;
