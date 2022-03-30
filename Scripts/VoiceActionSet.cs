@@ -2,22 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The Scriptable Object that holds voice lines and action names assoicated with those lines
+/// </summary>
 [CreateAssetMenu(menuName = "Voice Action Tool/New Voice", fileName = "New Voice")]
 [System.Serializable]
 public class VoiceActionSet : ScriptableObject
 {
     [SerializeField]
-    public List<VoiceAction> m_voiceActionList;
+    public List<VoiceAction> m_voiceActionList;//parameter list component of the insepctor
 
     [SerializeField]
-    public string randomVoiceSoName = "n/a";
+    public string randomVoiceSoName = "n/a";//name of this SO
+    
+    //Default Constructor
     public VoiceActionSet()
     {
-        //Debug.Log("Created RandomVoice SO");
         this.m_voiceActionList = new List<VoiceAction>();
         this.m_voiceActionList.Add(new VoiceAction("Action1"));
     }
 
+    /// <summary>
+    /// Plays a random line from the action.  Audio is played at the AudioSource
+    /// </summary>
+    /// <param name="actionName">Name of the action</param>
+    /// <param name="source">AudioSource you want to play from</param>
+    /// <param name="onlyIfNearPlayer">Optional: default false: set to true if you want to play the sound at the audio source only if the source is near the player's AudioListener</param>
+    /// <returns></returns>
     public bool PlayAction(string actionName, AudioSource source, bool onlyIfNearPlayer = false)
     {
         if (onlyIfNearPlayer == false || (onlyIfNearPlayer == true && Vector3.Distance(FindObjectOfType<AudioListener>().transform.position, source.transform.position) < source.maxDistance))
@@ -45,6 +56,14 @@ public class VoiceActionSet : ScriptableObject
         
     }
 
+    /// <summary>
+    /// Static: Plays a random line from the action.  Audio is played at the AudioSource
+    /// </summary>
+    /// <param name="voice">The VoiceActionSet you want to sample from</param>
+    /// <param name="actionName">Name of the action</param>
+    /// <param name="source"AudioSource you want to play from></param>
+    /// <param name="onlyIfNearPlayer">Optional: default false: set to true if you want to play the sound at the audio source only if the source is near the player's AudioListener</param>
+    /// <returns></returns>
     public static bool PlayAction(VoiceActionSet voice, string actionName, AudioSource source, bool onlyIfNearPlayer = false)
     {
         if (onlyIfNearPlayer == false || (onlyIfNearPlayer == true && Vector3.Distance(FindObjectOfType<AudioListener>().transform.position, source.transform.position) < source.maxDistance))
@@ -83,6 +102,9 @@ public class VoiceActionSet : ScriptableObject
     }
 }
 
+/// <summary>
+/// Container for the action string and the list of audio clips
+/// </summary>
 [System.Serializable]
 public class VoiceAction
 {

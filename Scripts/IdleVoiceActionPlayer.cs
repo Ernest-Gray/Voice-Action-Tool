@@ -2,29 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Sample MonoBehavior that demonstrates playing the "idle" action from a voiceActionSet
+/// </summary>
 public class IdleVoiceActionPlayer : MonoBehaviour
 {
     public VoiceActionSet voiceActionSet;
     public AudioSource audioSource;
 
+    //Min and max delay control the delay between playing idle lines
     [Min(0f)]
     public float minDelay = 10;
     public float maxDelay = 20;
 
+    //The string that is searched for in the voiceActionSet; is a insepctor paramter so the user can define what word they use for idle
     [Tooltip("This must be the same as the voice action name you want to play")]
     public string idleActionString = "idle";
 
+    //Time until the next sound is played
     private float TimeTilNextSound;
 
+    //NOT YET IMPLEMENTED: helps prevent overlapping noise
     [Tooltip("Prevents numerous IdleVoiceActionPlayer's from playing their audio at the same time")]
     public bool preventOtherIdleVoiceOverlap = true;
 
+    //NOT YET IMPLEMENTED: paramters to help control overlapping noise
     private static float globalDelayTime;
     private static IdleVoiceActionPlayer[] idlePlayers;
     private static List<IdleVoiceActionPlayer> voiceQ;
 
+    //Plays noise only if close to the player/audioListener
     public bool playOnlyIfNearPlayer = true;
 
+    //Validates insepctor values
     private void OnValidate()
     {
         if (minDelay > maxDelay)
